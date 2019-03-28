@@ -13,7 +13,8 @@ net = Detector(bytes("cfg/yolov3.cfg", encoding="utf-8"), bytes("cfg/yolov3.weig
                    bytes("cfg/coco.data", encoding="utf-8"))
 
 
-name = {0: "person", 1: "car"}
+label = open("cfg/coco_labels.txt").read().strip().split("\n") 
+name = {k: v for k, v in enumerate(label)}
 name_reverse = {v: k for k, v in name.items()}
 
 def detect(img):
